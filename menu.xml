@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OX>
+    <OXMENU id="NAVIGATION_ESHOPADMIN">
+        <MAINMENU id="mxcustnews">
+            <SUBMENU id="easytplblocks" cl="easytplblocks" />
+        </MAINMENU>
+    </OXMENU>
+</OX>
