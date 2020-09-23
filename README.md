@@ -1,35 +1,11 @@
-# [vt] cmsmenu - Module for OXID eShop 6.2+
-## current version: 3.0.0 ( 2020-08-20 )
-assign parent-child relations to cms pages to create category-like cms menu in main navigation  
+# [vt] Easy TPL Blocks - Module for OXID eShop 6.2+
+manage custom template blocks in your OXID eShop V6.2
 
 ### INSTALLATION
-`composer require -n vanilla-thunder/oxid-module-cmsmenu`
+`composer require -n vanilla-thunder/oxid-module-easytplblocks`
   
-### TEMPLATE CHANGES
-#### WAVE : application/views/wave/tpl/widget/header/categorylist.tpl
-````php
-32|  [{foreach from=$ocat->getContentCats() item="oTopCont" name="MoreTopCms"}]
-33|    [{block name="cmsmenu_dropdown"}] <!-- insert block opening tag before <li> -->
-34|      <li class="nav-item">
-35|        <a class="nav-link[{if $oContent->oxcontents__oxloadid->value === $oTopCont->oxcontents__oxloadid->value}] active[{/if}]" href="[{$oTopCont->getLink()}]">[{$oTopCont->oxcontents__oxtitle->value}]</a>
-36|      </li>
-37|    [{/block}]<!-- insert block closing tag after </li> -->
-38|  [{/foreach}]
-````
-
-#### FLOW : application/views/flow/tpl/widget/header/categorylist.tpl
-````php
-33|  [{foreach from=$ocat->getContentCats() item="oTopCont" name="MoreTopCms"}]
-34|    [{block name="cmsmenu_dropdown"}] <!-- insert block opening tag before <li> -->
-35|      <li[{if $oContent->oxcontents__oxloadid->value === $oTopCont->oxcontents__oxloadid->value}] class="active"[{/if}]>
-36|        <a href="[{$oTopCont->getLink()}]">[{$oTopCont->oxcontents__oxtitle->value}]</a>
-37|      </li>
-38|    [{/block}]<!-- insert block closing tag after </li> -->
-39|  [{/foreach}]
-````
-
 ### LICENSE AGREEMENT
-   [vt] cmsmenu - Module for OXID eShop 6.2+  
+   [vt] Easy TPL Blocks - Module for OXID eShop 6.2+  
    Copyright (C) 2020 Marat Bedoev    
   
    This program is free software;  
