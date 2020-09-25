@@ -15,6 +15,8 @@
 
 namespace VanillaThunder\Easytplblocks\Application;
 
+use OxidEsales\Eshop\Core\Registry;
+
 class Events
 {
     public static function onActivate()
@@ -31,7 +33,7 @@ class Events
               `OXPOS` int(11) NOT NULL,
               `OXCONTENT` text COLLATE utf8_general_ci NOT NULL
             ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;";
-            //$oDbMetaDataHandler->executeSql($sql);
+            $oDbMetaDataHandler->executeSql($sql);
         }
 
     }
@@ -39,5 +41,7 @@ class Events
     public static function onDeactivate()
     {
         // clear cache
+        $oUtils = Registry::getUtils();
+        $oUtils->resetTemplateCache();
     }
 }
