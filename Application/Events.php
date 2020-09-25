@@ -21,11 +21,7 @@ class Events
 {
     public static function onActivate()
     {
-        //$oDbMetaDataHandler = ContainerFactory::getInstance()->getContainer()->get(\OxidEsales\Eshop\Core\DbMetaDataHandler::class);
-        $oDbMetaDataHandler = oxNew(\OxidEsales\Eshop\Core\DbMetaDataHandler::class);
-
-        if (!$oDbMetaDataHandler->tableExists("easytplblocks")) {
-            $sql = "CREATE TABLE `easytplblocks` (
+        $query = "CREATE TABLE IF NOT EXISTS `easytplblocks` (
               `OXID` char(32) NOT NULL,
               `OXACTIVE` tinyint(1) NOT NULL DEFAULT '1',
               `OXTEMPLATE` varchar(128) COLLATE latin1_general_ci NOT NULL,
@@ -33,9 +29,8 @@ class Events
               `OXPOS` int(11) NOT NULL,
               `OXCONTENT` text COLLATE utf8_general_ci NOT NULL
             ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;";
-            $oDbMetaDataHandler->executeSql($sql);
-        }
 
+        \OxidEsales\Eshop\Core\DatabaseProvider::getDb()->execute($query);
     }
 
     public static function onDeactivate()
