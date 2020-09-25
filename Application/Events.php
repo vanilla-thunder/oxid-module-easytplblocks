@@ -41,7 +41,7 @@ class Events
     public static function onDeactivate()
     {
         // clear cache
-        $oUtils = Registry::getUtils();
-        $oUtils->resetTemplateCache();
+        //$oUtils = Registry::getUtils();
+        //$oUtils->resetTemplateCache();
     }
 }
