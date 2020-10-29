@@ -73,18 +73,12 @@
                         </lx-text-field>
                     </div>
                     <div flex-item>
-                        <lx-select lx-label="Block Name"
-                                   ng-model="blockData.OXBLOCKNAME"
-                                   lx-allow-new-value="true"
-                                   lx-allow-clear="false"
-                                   lx-choices="oxblocknameautocomplete"
-                                   lx-helper="(oxblocknameautocomplete.length === 0)"
-                                   lx-helper-message="wähle zuerst ein Template mit Blocks"
-                                   lx-loading="(loading > 0)">
-
-                            <lx-select-selected>{{ $selected }}</lx-select-selected>
-                            <lx-select-choices>{{ $choice }}</lx-select-choices>
-                        </lx-select>
+                        <lx-text-field lx-label="Block Name" lx-allow-clear="false">
+                            <input type="text" ng-model="blockData.OXBLOCKNAME" list="oxblocknameautocomplete" >
+                            <datalist id="oxblocknameautocomplete">
+                                <option ng-repeat="block in oxblocknameautocomplete" ng-value="block">
+                            </datalist>
+                        </lx-text-field>
                     </div>
                 </div>
 
