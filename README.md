@@ -3,6 +3,9 @@ manage custom template blocks in your OXID eShop V6.2
 
 ### INSTALLATION
 `composer require -n vanilla-thunder/oxid-module-easytplblocks`
+
+### Demo
+https://youtu.be/DJaycg0q8lg
   
 ### LICENSE AGREEMENT
    [vt] Easy TPL Blocks - Module for OXID eShop 6.2+  

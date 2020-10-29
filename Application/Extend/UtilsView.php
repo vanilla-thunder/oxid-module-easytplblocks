@@ -37,25 +37,23 @@ class UtilsView extends UtilsView_parent
         //var_dump($templateBlocksWithContent);
 
         // custom tempalte blocks
-        if($templateFileName === "page/shop/start.tpl") {
-            /** @var QueryBuilder $queryBuilder */
-            $queryBuilder = ContainerFactory::getInstance()->getContainer()->get(QueryBuilderFactoryInterface::class)->create();
-            $queryBuilder
-                ->select('*')
-                ->from('easytplblocks')
-                ->where('oxactive = 1')
-                ->andWhere("oxtemplate = :oxtemplate")
-                ->setParameters([
-                    'oxtemplate' => $templateFileName
-                ]);
-            $blocksData = $queryBuilder->execute()->fetchAll();
-            if(count($blocksData)>0) {
-                foreach ($blocksData as $block) {
-                    if (!is_array($templateBlocksWithContent[$block['OXBLOCKNAME']])) $templateBlocksWithContent[$block['OXBLOCKNAME']] = [];
-                    $templateBlocksWithContent[$block['OXBLOCKNAME']][] = $block['OXCONTENT'];
-                }
-            };
-        }
+        /** @var QueryBuilder $queryBuilder */
+        $queryBuilder = ContainerFactory::getInstance()->getContainer()->get(QueryBuilderFactoryInterface::class)->create();
+        $queryBuilder
+            ->select('*')
+            ->from('easytplblocks')
+            ->where('oxactive = 1')
+            ->andWhere("oxtemplate = :oxtemplate")
+            ->setParameters([
+                'oxtemplate' => $templateFileName
+            ]);
+        $blocksData = $queryBuilder->execute()->fetchAll();
+        if(count($blocksData)>0) {
+            foreach ($blocksData as $block) {
+                if (!is_array($templateBlocksWithContent[$block['OXBLOCKNAME']])) $templateBlocksWithContent[$block['OXBLOCKNAME']] = [];
+                $templateBlocksWithContent[$block['OXBLOCKNAME']][] = $block['OXCONTENT'];
+            }
+        };
 
         return $templateBlocksWithContent;
     }
